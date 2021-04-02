@@ -37,10 +37,40 @@
 * Consumer.
 * Topic.
 * Partition.
+* Offsets.
 * Consumer Groups.
 * Distributed system.
 
 
+
+
+
+## Brokers.
+* A Kafka cluster is composed of multiple brokers(servers)
+
+
+## Topic.
+* Topic: A particular stream of data.
+  * Similar tu table in the database (without all the constrains).
+  * You can have as many topics as you want.
+  * A topic is identified by its name
+* Topics are split in partitions.
+* Data is kept only for limited time (default is one week) 
+
+
+
+## Partition.
+* Each partition is ordered.
+* Each message within a partition gets a incremental id, called offset.
+* Order is guaranteed only within a partition (no across partitions)
+* Once the data is written to a partition, it can't be changed(immutability)
+* Data is assigned randomly to a partition unless a key is provided
+
+
+
+## Offsets.
+* Offsets only have a meaning for a specific partition.
+  * E.g offset 3 in partition 0 doesn't represent the same data as offsets 3 in partition 1
 
 
 
