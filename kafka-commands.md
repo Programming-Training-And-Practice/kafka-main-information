@@ -7,7 +7,7 @@
 `/bin/kafka-topics.sh --zookeeper [zookeeperHost:port, zookiperHost:port] --delete --topic hello-world` - delete topic
 
 ## Producer.
-`/bin/kafka-console-producer --topic hello-world --broker-list [kafkaHost:port;kafkaHost:port]`
+`/bin/kafka-console-producer --broker-list [kafkaHost:port;kafkaHost:port] --topic hello-world` - create producer
 
 ## Consumer.
-`/bin/kafka-console-consumer --topic hello-world --bootstrap-server [kafkaHost:port;kafkaHost:port]`
+`/bin/kafka-console-consumer --bootstrap-server [kafkaHost:port;kafkaHost:port] --topic hello-world` - create consumer
