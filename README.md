@@ -7,6 +7,7 @@
 ## Contents at a Glance.
 * [About.](#about)
 * [Documentation.](#documentation)
+* [Kafka terminal commands.](kafka-commands.md)
 * [General Concepts.](#general-concepts)
 * [Pros.](#pros)
 * [Cons.](#cons)
