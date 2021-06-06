@@ -59,7 +59,66 @@ Interface SQL: KSQL
 
 
 ## Brokers.
-* A Kafka cluster is composed of multiple brokers(servers)
+* A Kafka cluster is composed of multiple brokers(servers).
+* Each broker is identified with its id (integer).
+* Each broker contains certain topic partitions.
+* After connecting to any broker (called bootstrap broker), you will be connected to the entire cluster. 
+* A good number to get started is 3 broker, but some big clusters have over 100 brokers.
+* At any time only ONE broker can be a leader for a given partition.
+* Only that leader can receive and serve data for a partition.
+* The other brokers will synchronize the data.
+* Therefore, each partition has one leader and multiple ISR(in-sync replica).
+
+
+
+
+
+
+## Producers.
+* Producer write data to topics(which is made of partitions)
+* Producers automatically know  to which broker and partition to write to.
+* In case of broker failure, producer will automatically recover
+* Producer can choose to receive acknowledgment of data writes:
+  * acks=0 Producer won't wait for acknowledgment (possible data loss)
+  * acks=1 Producer will wait for leader acknowledgment (limited data loss)
+  * acks=all Leader + replicas(ISR) acknowledgment (no data loss)
+
+
+
+
+
+## Producers. Message keys.
+* Producers can choose to send a KEY with the message (string, number, etc...)
+* If KEY=null(key is not set), data is sent round robin (broker 1 and 2 then 3)  
+* If KEY is sent, then all messages for that key will alloys go to the same partition.
+* A KEY is basically sent if you need message ordering for a specific field (ex:truck_id)
+* Advanced: we get this guarantee thanks to 'KEY HASHING', which depends on the number of partitions.
+
+
+
+
+
+## Consumers.
+* Consumers read data from a topic(identified by name). 
+* Consumers know which broker to read from.
+* In case broker failure, consumers know how to recover.
+* Data is read in order within each partitions. 
+
+
+
+
+
+## Consumers Groups.
+* Consumers read data in consumer group.
+* Each consumer within a group reads from exclusive partitions.
+* If you have more consumers than partitions, some consumers will be inactive.
+* Consumers will automatically use a GroupCoordinator and a ConsumerCoordinator assign a consumers to a partition.
+
+
+
+
+
+## Consumers Offsets.
 
 
 
@@ -72,7 +131,17 @@ Interface SQL: KSQL
   * A topic is identified by its name
 * Topics are split in partitions.
 * Data is kept only for limited time (default is one week) 
-* cuando se crea un topic, por defecto se crean partitions=1 replication-factor=1
+* Cuando se crea un topic, por defecto se crean partitions=1 replication-factor=1
+
+
+
+
+
+## Topic replication factor.
+* Topics should have a replication factor > 1 (usually between 2 and 3). Three is the gold standard.
+* This way if a broker si down, another broker can serve the data.
+* 
+
 
 
 
@@ -128,6 +197,7 @@ Interface SQL: KSQL
 * A batch is a collection of messages that are written in the same topic and in the same partition.
 * They are compressed so that they are transmitted more efficiently.
 * It's a compromise between latency and performance.
+
 
 
 
