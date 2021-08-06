@@ -33,12 +33,12 @@
 
 
 ## General Concepts.
-* Publisher.
 * Broker.
-* Consumer.
 * Topic.
 * Partition.
 * Offsets.
+* Publisher.
+* Consumer.
 * Consumer Groups.
 * Distributed system.
 
@@ -132,6 +132,7 @@ Interface SQL: KSQL
 * Topics are split in partitions.
 * Data is kept only for limited time (default is one week) 
 * Cuando se crea un topic, por defecto se crean partitions=1 replication-factor=1
+* Default size of topic message is 1MB
 
 
 
