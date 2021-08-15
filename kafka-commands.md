@@ -17,10 +17,15 @@
 * `/bin/kafka-console-producer --broker-list [kafkaHost:port;kafkaHost:port] --topic hello-world` - create producer
 * `/bin/kafka-console-producer --bootstrap-server localhost:9092 --topic hello-world JSON`
 
+* `/bin/kafka-console-producer --topic hola-mundo --property parse.key=true --property key.separator=":" --broker-list [kafkaHost:port;kafkaHost:port]`
+
 ## Consumer.
 * `/bin/kafka-console-consumer --bootstrap-server [kafkaHost:port;kafkaHost:port] --topic hello-world` - create consumer
 * `/bin/kafka-console-consumer --bootstrap-server localhost:9092 --topic hello-world`
 * `/bin/kafka-console-consumer --bootstrap-server localhost:9092 --topic hello-world --from-beginning`
+
+* `/bin/kafka-console-consumer --topic hola-mundo --property print-timestamp=true --partition=2 --bootstrap-server [kafkaHost:port;kafkaHost:port]`
+* `/bin/kafka-console-consumer --topic hola-mundo --property print-timestamp=true --property print.key=true --property key.separator=":" --partition=2 --bootstrap-server [kafkaHost:port;kafkaHost:port]`
 
 ## Configs.
 * `/bin/kafka-configs.sh --bootstrap-server localhos:9092 --entiry-type topics --entity-name topicName --alter --add-config max.message.bytes=10485760`
