@@ -11,3 +11,13 @@
 * Consumers will automatically use a GroupCoordinator and a ConsumerCoordinator assign a consumers to a partition.
 * To act like a queue, put all your consumers in one group.
 * To act like a pub/sub, put each consumer in a unique group.
+
+
+* Consumers Groups subscribe to a topic, not to a specific partition
+
+
+
+
+
+## Consumer rebalances into consumers Groups.
+* 

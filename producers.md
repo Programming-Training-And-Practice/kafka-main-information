@@ -6,8 +6,13 @@
 
 ## Producers.
 * Producer write data to topics(which is made of partitions)
-* Producers automatically know  to which broker and partition to write to.
+* Producers automatically know to which broker and partition to write to.
 * In case of broker failure, producer will automatically recover
+
+
+
+
+## ## Producers Acknowledgment
 * Producer can choose to receive acknowledgment of data writes:
     * acks=0 Producer won't wait for acknowledgment (possible data loss)
     * acks=1 Producer will wait for leader acknowledgment (limited data loss)

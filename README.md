@@ -14,8 +14,7 @@
 * [Queue vs Pub/Sub](#queue-vs-pubsub)
 * [Run in the docker.](#run-in-the-docker)
 * [Help.](#help)
-
-* [Apache Kafka and Apache Avro.](apache-kafka-and-apache-avro.md)
+* [Apache Avro.](https://github.com/descriptions-of-it-technologies/apache-avro)
 * [Apache Kafka Registry.](apache-kafka-registry.md)
 * [Brokers.](brokers.md)
 * [Consumers.](consumers.md)
@@ -125,6 +124,30 @@ Interface SQL: KSQL
 
 
 
+## Security Overview.
+* Kafka supports Encryption in Transit. 
+* Kafka supports authentication and authorization.
+* No encryption at rest out of the box.
+* Clients can be mixed with & without encryption & authentication.
+
+
+* Using security is optional - But!
+
+
+
+
+
+## Troubleshooting.
+* Confluent control center.
+* Log files
+* Special config settings
+    * SSL logging.
+    * Authorizer debugging.
+
+
+
+
+
 ## Run in the docker.
 `docker run --name kafka -p 9092:9092 
         -e KAFKA_ZOOKEEPER_CONNECT=localhost:2181
@@ -138,7 +161,7 @@ Interface SQL: KSQL
 
 
 ## Useful links.
-* []()
+* [Conductor.io](https://www.conduktor.io/)
 
 
 
