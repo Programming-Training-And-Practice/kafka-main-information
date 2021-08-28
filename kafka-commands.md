@@ -24,6 +24,7 @@
 * `/bin/kafka-console-producer --bootstrap-server localhost:9092 --topic hello-world JSON`
 
 * `/bin/kafka-console-producer --broker-list [kafkaHost:port;kafkaHost:port] --topic hola-mundo --property parse.key=true --property key.separator=":"`
+* `kafka-console-producer --broker-list 127.0.0.1:9092 --topic first_topic --property parse.key=true --property key.separator=","`
 
 * `kafka-console-producer --broker-list localhost:9092 --topic aaa --producer-property acks=all` 
 
@@ -33,10 +34,19 @@
 * `/bin/kafka-console-consumer --bootstrap-server [kafkaHost:port;kafkaHost:port] --topic hello-world` - create consumer
 * `/bin/kafka-console-consumer --bootstrap-server localhost:9092 --topic hello-world`
 * `/bin/kafka-console-consumer --bootstrap-server localhost:9092 --topic hello-world --from-beginning`
-* `/bin/kafka-console-consumer --bootstrap-server localhost:9092 --topic hello-world --group`
+* `/bin/kafka-console-consumer --bootstrap-server localhost:9092 --topic hello-world --group nameGroup`
 
 * `/bin/kafka-console-consumer --bootstrap-server [kafkaHost:port;kafkaHost:port] --topic hola-mundo --property print-timestamp=true --partition=2 `
 * `/bin/kafka-console-consumer --topic hola-mundo --property print-timestamp=true --property print.key=true --property key.separator=":" --partition=2 --bootstrap-server [kafkaHost:port;kafkaHost:port]`
+* `kafka-console-consumer --bootstrap-server 127.0.0.1:9092 --topic first_topic --from-beginning --property print.key=true --property key.separator=","`
+* `bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 \
+  --topic streams-wordcount-output \
+  --from-beginning \
+  --formatter kafka.tools.DefaultMessageFormatter \
+  --property print.key=true \
+  --property print.value=true \
+  --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer \
+  --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer`
 
 
 
@@ -44,6 +54,9 @@
 * `kafka-consumer-groups --bootstrap-server localhost:9092 --list`
 * `kafka-consumer-groups --bootstrap-server localhost:9092 --describe --group nameGroup`
 * `kafka-consumer-groups --bootstrap-server localhost:9092 --describe --all-groups`
+* `kafka-consumer-groups --bootstrap-server localhost:9092 --topic topicName --group groupName --execute --reset-offsets --to-earliest`
+* `kafka-consumer-groups --bootstrap-server localhost:9092 --topic topicName --group groupName --execute --reset-offsets --shift-by 2`
+* `kafka-consumer-groups --bootstrap-server localhost:9092 --topic topicName --group groupName --execute --reset-offsets --shift-by -2`
 
 
 
@@ -54,6 +67,7 @@
 
 ## Zookeeper.
 `zookeeper-server-start.sh ~/Programs/kafka_2.13-2.7.0/config/zookeeper.properties`
+`zookeeper-server-start.sh -deamon ~/Programs/kafka_2.13-2.7.0/config/zookeeper.properties`
 
 
 

@@ -162,6 +162,7 @@ Interface SQL: KSQL
 
 ## Useful links.
 * [Conductor.io](https://www.conduktor.io/)
+* [KafkaCat](https://github.com/edenhill/kafkacat)
 
 
 
