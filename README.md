@@ -2,8 +2,6 @@
 
 
 
-
-
 ## Contents at a Glance.
 * [About.](#about)
 * [Documentation.](#documentation)
@@ -15,7 +13,7 @@
 * [Run in the docker.](#run-in-the-docker)
 * [Help.](#help)
 * [Apache Avro.](https://github.com/descriptions-of-it-technologies/apache-avro)
-* [Apache Kafka Registry.](apache-kafka-registry.md)
+* [Apache Kafka Registry.](apache-kafka-schema-registry.md)
 * [Brokers.](brokers.md)
 * [Consumers.](consumers.md)
 * [Consumers Groups.](consumers-groups.md)
@@ -29,17 +27,11 @@
 
 
 
-
-
 ## About.
 
 
 
-
-
 ## Documentation.
-
-
 
 
 
@@ -55,8 +47,6 @@
 
 
 
-
-
 ## Kafka API.
 * Producer API
 * Consumer API
@@ -67,14 +57,10 @@ Interface SQL: KSQL
 
 
 
-
-
 ## Delivery methods. [Link.](https://kafka.apache.org/documentation/#semantics)
 * At least once semantics - A message will be resent if needed until it is acknowledged.
 * At most once semantics - A message will only be sent once and not resent on failure.
 * Exactly once semantics - A message will only be seen once by the consumer of the message.
-
-
 
 
 
@@ -89,14 +75,10 @@ Interface SQL: KSQL
 
 
 
-
-
 ## Cons.
 * ZooKeeper.
 * Producer explicit partition can lead to problems.
 * Complex to install, configure and manage.
-
-
 
 
 
@@ -105,8 +87,6 @@ Interface SQL: KSQL
 * Pub/Sub: Message published once, consumed many times.
 
 * Kafka support both Queue and Pub/Sub.
-
-
 
 
 
@@ -122,18 +102,13 @@ Interface SQL: KSQL
 
 
 
-
-
 ## Security Overview.
 * Kafka supports Encryption in Transit. 
 * Kafka supports authentication and authorization.
 * No encryption at rest out of the box.
 * Clients can be mixed with & without encryption & authentication.
 
-
 * Using security is optional - But!
-
-
 
 
 
@@ -144,9 +119,7 @@ Interface SQL: KSQL
     * SSL logging.
     * Authorizer debugging.
 
-
-
-
+    
 
 ## Run in the docker.
 `docker run --name kafka -p 9092:9092 
@@ -158,13 +131,9 @@ Interface SQL: KSQL
 
 
 
-
-
 ## Useful links.
 * [Conductor.io](https://www.conduktor.io/)
 * [KafkaCat](https://github.com/edenhill/kafkacat)
-
-
 
 
 

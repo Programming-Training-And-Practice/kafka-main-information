@@ -8,6 +8,7 @@
 * `/bin/kafka-topics.sh --bootstrap-server localhost:9092 --describe`
 * `/bin/kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic Order`
 * `/bin/kafka-topics.sh --bootstrap-server localhost:9092 --delete --topic Order`
+* `kafka-topics --bootstrap-server localhost:9092 --create --topic compaction-topic --partitions 1 --replication-factor 1 --config cleanup.policy=compact --config min.cleanable.dirty.ratio=0.001 --config segment.ms=5000`
 
 
 
@@ -66,10 +67,19 @@
 
 
 ## Zookeeper.
-`zookeeper-server-start.sh ~/Programs/kafka_2.13-2.7.0/config/zookeeper.properties`
-`zookeeper-server-start.sh -deamon ~/Programs/kafka_2.13-2.7.0/config/zookeeper.properties`
+* `zookeeper-server-start.sh ~/Programs/kafka_2.13-2.7.0/config/zookeeper.properties`
+* `zookeeper-server-start.sh -deamon ~/Programs/kafka_2.13-2.7.0/config/zookeeper.properties`
 
 
 
 ## Kafka.
-`kafka-server-start.sh ~/Programs/kafka_2.13-2.7.0/config/server.properties`
+* `kafka-server-start.sh ~/Programs/kafka_2.13-2.7.0/config/server.properties`
+
+
+
+## Configs 
+* Add/Remove entity config for a topic, client, user or broker.
+* `kafka-configs --zookeeper localhost:2181 --entity-type topics --entity-name configured-topic --describe`
+* `kafka-configs --zookeeper localhost:2181 --entity-type topics --entity-name configured-topic --alter --add-config min.insync.replicas=2`
+* `kafka-configs --zookeeper localhost:2181 --entity-type topics --entity-name configured-topic --alter --delete-config min.insync.replicas`
+

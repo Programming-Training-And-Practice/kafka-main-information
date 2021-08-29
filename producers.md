@@ -158,7 +158,22 @@
 
 
 
+## `min.insync.replicas`
+* `acks=all` must be used in conjunction with `min.insync.replicas` 
+* `min.insync.replicas` can be set at the broker or topic level (override)
+* `min.insync.replicas=2` implies that at least 2 brokers that are ISR (including leader) must respond that they have the data
+* that means if you use `replication.factor=3`, `min.insync=2`, `acks=all`, you can only tolerate 1 broker going down, 
+  otherwise the producer will receive an exception on send.
 
+
+
+## `unclean.leader.election`
+* if all of you in sync replicas dies (but you still have out of sync replicas up), you have the following options:
+  * wait for an ISR to come back online (default)
+  * enable `unclean.leader.election=true` and start producing to non ISR partitions
+* if you enable `unclean.leader.election=true`, you improve availability, but you will lose data because other messages on ISR will be discarded
+* overall this is a very dangerous setting and its implication must be understood fully before enabling it.
+  * user cases include: metrics collection, log collections, and other cases where data loss is somewhat acceptable, at the trade-off of availability.
 
 
 
